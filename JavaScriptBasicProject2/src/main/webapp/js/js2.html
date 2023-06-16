@@ -1,0 +1,31 @@
+<!-- 
+   CallBack -> 321page
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function func(callback)
+{
+	for(let i=1;i<10;i++){
+		callback(); //setTimer(), setInterval(callBack)
+	}
+}
+
+let callback=function(){
+	document.write("함수 호출...")
+}
+
+window.onload=function(){
+	func(callback);
+	
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
