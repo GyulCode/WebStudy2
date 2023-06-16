@@ -1,0 +1,71 @@
+<!-- 
+재확인
+객체 배열과 전역변수
+<script>
+변수 --- 전역변수
+function unc(매개변수)
+{
+   변수 - 지역변수(func안에서만 사용가능
+}
+</script
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let sawons=[
+	{sabun:1,name:"홍길동",dept:"개발부",job:"대리",pay:4500},
+	{sabun:2,name:"짱구",dept:"자재부",job:"과장",pay:5500},
+	{sabun:3,name:"훈이",dept:"영업부",job:"사원",pay:2500},
+	{sabun:4,name:"맹구",dept:"총무부",job:"부장",pay:6500},
+	{sabun:5,name:"철수",dept:"어쩌구부",job:"주임",pay:3500},
+	
+]
+
+//기능
+const sawonList=()=>{
+	console.log(sawons)
+}
+
+const sawonDetail=(sabun)=>{
+	let sawon=sawons.find(sa=>sa.sabun);
+	/*
+	sawons.find(function(sa))
+	
+	find의 역할
+	for(Sawon s:sawons){
+		if(s.sabun==sabun)
+			{
+			   return s;
+			}
+	}
+	
+	find의 역할
+	for(let sa of sawons){
+		if(sa.sabun==sabun){
+			return sa;
+		}
+	}
+		
+	*/
+	console.log(sawon);
+}
+const sawonInsert=()=>{
+	sawons.push({sabun:6,name:"춘향이",dept:"개발부",job:"빼빼로",pay:5500})
+}
+
+window.onload=()=>{
+	sawonList();
+	sawonInsert();
+	sawonList();
+	sawonDetail(4);
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
