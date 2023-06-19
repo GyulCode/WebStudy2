@@ -1,0 +1,55 @@
+<!-- onclick -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let i=0;
+window.onload=function(){
+	let r=document.querySelector("#read")
+	r.onmouseover=function(){
+		r.style.cursor="pointer"
+	}
+    r.onmouseout=function(){
+    	r.style.cursor="none"
+	}
+    r.onclick=function(){
+    		let ss=document.querySelector("#s");
+    	if(i==0){
+    		ss.style.display='';
+    		r.textContent="닫기"
+    		i=1;
+    	}else{
+    		i=0;
+    		ss.style.display='none';
+    		r.textContent="더보기"
+    	}
+    	
+    }
+    //form태그에서 submit을 제거할때 사용 -> 원래는naver 로 가지만 return false로 막음
+    document.querySelector("#clickkkk").onclick=function(){
+    	//return false;
+    }
+}
+</script>
+</head>
+<body>
+<a href="http://www.naver.com" id="clickkkk">Naver</a>
+<p>
+<pre>
+일론 머스크가 이끄는 우주기업 스페이스X에 엔지니어로 입사하는 14살 천재 소년 카이란 쿼지가 일에 대한 기대감을 내비쳤다.
+
+다음 달부터 스페이스X의 스타링크 부서의 소프트웨어 엔지니어로 일하는 쿼지는 18일(현지시간) 미 경제매체 인사이더와 인터뷰에서 "정말 흥분된다"며 "내가 운전을 시작할 수 있을 때까지 엄마가 나를 회사에 내려줘야 할 것"이라고 웃었다.
+
+미 실리콘밸리에 있는 샌타클래라대를 막 졸업한 쿼지는 일을 시작하기 위해 현재 살고 있는 캘리포니아주 플레전턴에서 워싱턴주 레드몬드로 이사할 예정이다.
+<span id="read">더보기</span>
+<span style="display:none" id="s">
+방글라데시계 미국인인 그는 샌타클래라대 172년 역사상 가장 어린 졸업생이다. 두 살 때 완벽한 문장으로 말했고, 유치원 때는 친구들과 선생님에게 라디오 뉴스를 얘기해줬다고 한다.
+
+초등학교 3학년 때에는 라스 포시타스 커뮤니티 칼리지에 등록하고, 11살에 샌타클래라대에 편입해 컴퓨터 과학 및 공학을 전공했다. 인텔 연구소에서 4개월간 인공지능(AI) 연구협력자로 인턴 경험을 쌓기도 했다.
+</span>
+</pre>
+
+</body>
+</html>
