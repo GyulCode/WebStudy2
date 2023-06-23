@@ -34,7 +34,8 @@
   vo.setPwd(pwd);
   //-> setProperty
   
-  String filename=mr.getOriginalFileName("upload");
+  //String filename=mr.getOriginalFileName("upload");
+  String filename=mr.getFilesystemName("upload"); //파일이 중복명ㅇ으로 저장시 원본을 삭제하니 직접 접근해서 삭제하겠다!
   if(filename==null){//업로드가 안된상태 
 	  vo.setFilename("");
       vo.setFilesize(0);

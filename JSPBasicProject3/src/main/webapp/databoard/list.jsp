@@ -44,6 +44,9 @@
   */
   
   String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+  //Session을 읽어온다 : Object getAttribute("id");
+  String id=(String)session.getAttribute("id");
+  //id가 null -> 로그인이 안된 상태
   
 %>
 <!DOCTYPE html>
@@ -70,7 +73,29 @@ text-align:center
 <div class="container">
   <h1>자료실</h1>
   <div class='row'>
-    <table>
+  
+    <table class='table'>
+      <tr>
+        <%
+           if(id!=null){
+        %>
+        <td class='text-right'>
+          <%=session.getAttribute("name") %>님 로그인 중입니다.
+          <a href='../member/logout.jsp' class='btn btn-sm btn-primary'>로그아웃</a>
+        </td>
+        <%
+           }else{
+        %>
+        <td class='text-right'>
+          <a href='../member/login.jsp' class='btn btn-sm btn-primary'>로그인</a>
+        </td>
+        <%
+            }
+        %>
+      </tr>
+    </table>
+  
+    <table class='table'>
       <tr>
         <td>
          <a href="insert.jsp" class='btn btn-sm btn-warning'>새글</a>
