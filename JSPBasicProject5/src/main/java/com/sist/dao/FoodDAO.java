@@ -139,5 +139,45 @@ public class FoodDAO {
 		
 	}
 	
+	//상세보기
+	public FoodBean foodDetailData(int fno) {
+		FoodBean vo=new FoodBean();
+		try {
+			//connection -> sql전송
+			getConnection();
+			String sql="SELECT fno, poster, name, tel, score, time, parking, type, price, menu, address "
+					+ "FROM food_location "
+					+ "WHERE fno=?";
+			ps=conn.prepareStatement(sql);
+			//실행전에 ?에 값을 채운다
+			ps.setInt(1, fno);
+			//실행후 결과값 읽기
+			ResultSet rs = ps.executeQuery();
+			//데이터가 있는 메몰리에 커서를 위치
+			rs.next();
+			vo.setFno(rs.getInt(1));
+			vo.setPoster(rs.getString(2));
+			vo.setName(rs.getString(3));
+			vo.setTel(rs.getString(4));
+			vo.setScore(rs.getDouble(5));
+			vo.setTime(rs.getString(6));
+			vo.setParking(rs.getString(7));
+			vo.setType(rs.getString(8));
+			vo.setPrice(rs.getString(9));
+			vo.setMenu(rs.getString(10));
+			vo.setAddress(rs.getString(11));
+			rs.close();
+			// 정수 : rs.getint(), 실수 : rs.getDouble, 날짜 date
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//반환 -> connection
+			disConnection();
+		}
+		return vo;
+				
+	}
+	
 
 }
