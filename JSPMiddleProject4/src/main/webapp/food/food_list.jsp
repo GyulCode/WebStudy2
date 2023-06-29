@@ -15,7 +15,7 @@
 
 
 %>
-<%-- JSTL,EL에서 사용하는 변수 설정 --%>
+JSTL,EL에서 사용하는 변수 설정
     <c:set var="cvo" value="<%=cvo %>"/>
     <c:set var="list" value="<%=list %>"/>
 <!DOCTYPE html>
