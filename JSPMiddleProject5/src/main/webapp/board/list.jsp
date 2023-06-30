@@ -28,6 +28,7 @@
     
     request.setAttribute("today", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
     request.setAttribute("msg", "관리자가 삭제한 게시물입니다.");
+    
 %>
 <!DOCTYPE html>
 <html>

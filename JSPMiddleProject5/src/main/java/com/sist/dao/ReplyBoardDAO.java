@@ -254,7 +254,7 @@ public class ReplyBoardDAO {
 			if(db_pwds.equals(pwd)) {
 				bCheck=true;
 				//2.삭제 가능 여부 확인
-				sql="SELECT root,depth, FROM replyboard "
+				sql="SELECT root, depth FROM replyboard "
 						+ "WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, no);
@@ -291,7 +291,8 @@ public class ReplyBoardDAO {
 				ps.setInt(1, no);
 				ps.executeUpdate();
 			
-			} catch (Exception e) {
+			}
+			}catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				disConnection();

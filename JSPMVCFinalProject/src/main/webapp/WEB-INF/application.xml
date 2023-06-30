@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  XML : 확장된 MarkUp Language
+  ===
+  1) 지정된 태그, 속성이 없다 (사용자 정의)
+  2) 시맨텍 태그 사용(태그의 의미) = html은 추상태그
+     <a>
+       <b>홍길동</b>
+       <c>25</c>
+     </a>
+     =============html
+     <회원>
+       <이름>홍길동</이름>
+       <나이>25</난이>
+     </회원>
+     =============시맨텍
+     
+  3. 문법 -> react(xml형식)
+     1. 루트태그가 한개가 존재
+     2. 태그의 대소문자 구분
+        <a>  <A> 다름
+     3. 속성값이 있는 경우 반드시 ""
+     4. 여는 태그와 닫는 태그가 명확해야 한다.
+        =단독태그는 반드시 </>
+        <br> = <br/>
+     5. 순서가 명확하다.(계층 구조)
+        열고 닫는순서
+     6. DTD 태그와 속성을 정의하고 있다.
+        DTD HTML 
+        
+     7. 지정된 태그가 아니면 사용하지 못한다
+     8. 태그의 순서가 있다. 6번?
+     ============================
+     프로그램언어에서 처리(데이터 읽기)
+     jaxp 
+        DOM = 트리형태로 문서 제어(속돋도 늦다 수장 삭제 추가)
+        SAX = 한줄씩 읽어서 데이터 추출(스프링, 마이바티스)
+     jaxb : 객체 = xml(빅데이터) = 1.8이상부터 지원안한다고함
+   
+
+ -->
+ <beans>
+   <!-- <bean id="main" class="com.sist.model.MainModel"/>
+   <bean id="board" class="com.sist.model.BoardModel"/>
+   <bean id="notice" class="com.sist.model.noticeModel"/>
+   <bean id="reserve" class="com.sist.model.ReserveModel"/>
+   <bean id="recommand" class="com.sist.model.RecommandModel"/> -->
+ </beans>
+ 
+ 
+ 
+ 
+ 
