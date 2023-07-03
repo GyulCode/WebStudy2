@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +13,6 @@
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="${main_jsp }"></jsp:include>
 <jsp:include page="footer.jsp"></jsp:include>
-
-
-
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a> 
 <!-- JAVASCRIPTS --> 
 <script src="../layout/scripts/jquery.min.js"></script> 

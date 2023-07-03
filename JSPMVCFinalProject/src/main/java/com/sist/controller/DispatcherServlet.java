@@ -134,7 +134,7 @@ public class DispatcherServlet extends HttpServlet {
 					}
 					else if(jsp.startsWith("redirect:")) {
 						//sendredirect
-						response.sendRedirect(jsp.substring(jsp.indexOf(":")));
+						response.sendRedirect(jsp.substring(jsp.indexOf(":")+1));
 						
 					}else {
 						RequestDispatcher rd=request.getRequestDispatcher(jsp);
