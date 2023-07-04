@@ -48,9 +48,7 @@
         </article>
       </li>
     </ul>
-    <!-- ################################################################################################ -->
     <h2 class="sectiontitle">믿고 보는 맛집 리스트</h2>
-    <!-- ################################################################################################ -->
     <div class="flexslider carousel basiccarousel btmspace-80">
       <ul class="slides">
        <c:forEach var="vo" items="${list }" varStatus="s">
