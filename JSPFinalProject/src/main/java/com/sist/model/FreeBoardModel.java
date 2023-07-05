@@ -5,6 +5,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sist.common.CommonModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -32,6 +33,7 @@ public class FreeBoardModel {
 		request.setAttribute("list", list);
 		// board/list.jsp로 전송 
 		request.setAttribute("main_jsp", "../board/list.jsp");
+		CommonModel.commonRequestData(request);
 		// main_jsp => 화면 출력 
 		return "../main/main.jsp";
 	}
@@ -41,6 +43,7 @@ public class FreeBoardModel {
 			 HttpServletResponse response)
 	{
 		request.setAttribute("main_jsp", "../board/insert.jsp");
+		CommonModel.commonRequestData(request);
 		return "../main/main.jsp";
 	}
 	@RequestMapping("board/insert_ok.do")
@@ -78,6 +81,7 @@ public class FreeBoardModel {
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../board/detail.jsp");
+		CommonModel.commonRequestData(request);
 		return "../main/main.jsp";
 	}
 	// Ajax

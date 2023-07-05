@@ -94,6 +94,7 @@ public class FoodDAO {
 	   }
 	   return list;
    }
+   
    // 지역별 맛집 => 총페이지 
    public int foodLoactionTotalPage(String fd)
    {
@@ -120,4 +121,167 @@ public class FoodDAO {
 	   }
 	   return total;
    }
+   
+// 카테고리별 맛집 
+   // 1. 카테고리 정보
+   public CategoryVO foodCategoryInfoData(int cno)
+   {
+	   CategoryVO vo=new CategoryVO();
+	   try
+	   {
+		   // Connection  생성 
+		   conn=db.getConnection();
+		   String sql="SELECT title,subject "
+				     +"FROM food_category "
+				     +"WHERE cno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, cno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setTitle(rs.getString(1));
+		   vo.setSubject(rs.getString(2));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
+   
+   //2. 실제 맛집 정보
+   public List<FoodVO> foodCategoryListData(int cno)
+   {
+	   List<FoodVO> list=new ArrayList<FoodVO>();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT fno, cno, poster, name, score, address "
+				     +"FROM food_house "
+				     +"WHERE cno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, cno);
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next()) {
+			   FoodVO vo=new FoodVO();
+			   vo.setFno(rs.getInt("fno")); //인덱스 번호가 편하긴한데 MyBatis에서는 쿼리에 던지는 컬럼명으로 찾음 setter를 찾아온다.
+			   vo.setCno(rs.getInt("cno"));
+			   String poster=rs.getString("poster");
+			   poster=poster.substring(0,poster.indexOf("^"));
+			   poster=poster.replace("#","&");
+			   vo.setPoster(poster);
+			   vo.setName(rs.getString("name"));
+			   vo.setScore(rs.getDouble("score"));
+			   String addr=rs.getString("address");
+			   addr=addr.substring(0,addr.indexOf("지번"));
+			   vo.setAddress(addr.trim());
+			   list.add(vo);
+			   
+			   
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return list;
+   }
+   
+   // 맛집 상세보기 - 조회수 증가후 카테고리별 가게 하나씩 갖고옴
+   public FoodVO foodDetailData(int fno)
+   {
+	   FoodVO vo=new FoodVO();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="UPDATE food_house SET "
+		   		+ "hit=hit+1 "
+				+"WHERE fno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, fno);
+		   ps.executeUpdate();
+		   
+		   sql="SELECT fno, cno, name, score, address, phone, type, "
+		   		+ "time, parking, price, menu "
+		   		+ "FROM food_house "
+		   		+ "WHERE fno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, fno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setFno(rs.getInt(1));
+		   vo.setCno(rs.getInt(2));
+		   vo.setName(rs.getString(3));
+		   vo.setScore(rs.getDouble(4));
+		   vo.setAddress(rs.getString(5));
+		   vo.setPhone(rs.getString(6));
+		   vo.setType(rs.getString(7));
+		   vo.setTime(rs.getString(8));
+		   
+		   vo.setParking(rs.getString(9));
+		   vo.setPrice(rs.getString(10));
+		   vo.setMenu(rs.getString(11));
+		   vo.setPoster(rs.getString(11));
+		   
+		   
+		   rs.close();
+		   
+		   
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
+   
+   // 맛집 -> 인근 명소 -> 레시피 가격비교
+   public List<FoodVO> foodTop7()
+   {
+	   List<FoodVO> list=new ArrayList<FoodVO>();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT fno,name,hit,rownum "
+		   		+ "FROM (SELECT fno,name,hit "
+		   		+ "FROM food_house ORDER BY hit DESC) "
+				+ "WHERE rownum <=7 ";
+		   
+		   ps=conn.prepareStatement(sql);
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next()) {
+			   FoodVO vo=new FoodVO();
+			   vo.setFno(rs.getInt(1));
+			   vo.setName(rs.getString(2));
+			   vo.setHit(rs.getInt(3));
+			   list.add(vo);
+		   }
+		  rs.close();
+		   
+		   
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return list;
+   }
+   
+   
+   
+   
+   
  }
