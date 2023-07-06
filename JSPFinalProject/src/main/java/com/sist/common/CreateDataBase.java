@@ -27,5 +27,15 @@ public class CreateDataBase {
 			e.printStackTrace();
 		}
 	}
+	
+	public void disConnection(Connection conn, CallableStatement ps) {
+		try {
+			if(ps!=null)ps.close();
+			if(conn!=null)conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }

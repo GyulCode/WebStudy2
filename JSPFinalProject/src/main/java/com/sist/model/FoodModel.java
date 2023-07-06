@@ -126,6 +126,7 @@ public class FoodModel {
 	  // 전송 => return에 있는 jsp가 받는다 
 	  // include시에는 include된 모든 JSP에서 사용이 가능(request공유)
 	  request.setAttribute("main_jsp","../food/food_category_list.jsp");
+	  
 	  CommonModel.commonRequestData(request);
 	  return "../main/main.jsp";
   }
