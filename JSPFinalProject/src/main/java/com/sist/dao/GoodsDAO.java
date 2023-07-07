@@ -52,7 +52,7 @@ public class GoodsDAO {
 	  {
 		  ex.printStackTrace();
 	  }
-	  finally
+	  finally 
 	  {
 		  db.disConnection(conn, ps);
 	  }
@@ -70,6 +70,7 @@ public class GoodsDAO {
 		  ResultSet rs=ps.executeQuery();
 		  rs.next();
 		  total=rs.getInt(1);
+		  System.out.println("총페이지 : "+total);
 		  rs.close();
 	  }catch(Exception ex)
 	  {

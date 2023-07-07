@@ -1,25 +1,15 @@
 package com.sist.vo;
-
 import java.util.*;
-
 public class ReplyVO {
-	private int no, type,cno;
-	private String id, name, msg,dbday;
-	private Date regdate;
-	
-	
-	
+    private int no,type,cno;
+    private String id,name,msg,dbday;
+    private Date regdate;
+    
 	public String getDbday() {
 		return dbday;
 	}
 	public void setDbday(String dbday) {
 		this.dbday = dbday;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
 	}
 	public int getNo() {
 		return no;
@@ -57,9 +47,11 @@ public class ReplyVO {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	
-	
-	
-	
-
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+  
 }

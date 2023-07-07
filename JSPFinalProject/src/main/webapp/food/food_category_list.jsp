@@ -26,8 +26,7 @@
        <tr>
          <td>
             <%-- <%= request.getAttribute("list")%> --%>
-             <!-- 자바로 보면 request.getattribute("list") -->
-           <c:forEach var="vo" items="${list }"> <!-- FoodModel의 list -->
+           <c:forEach var="vo" items="${list }">
              <table class="table">
               <tr>
                 <td width=35% class="text-center" rowspan="3">
@@ -43,7 +42,9 @@
                <td width=65%>${vo.address }</td>
               </tr>
               <tr>
-                <td width=65% height="150"></td>
+                <td width=65% height="150" valign="top" class="text-left">
+                 <pre style="white-space: pre-wrap;background-color: white;border:none">${vo.msg }</pre>
+                </td>
               </tr>
               
              </table>

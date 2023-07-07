@@ -7,4 +7,5 @@
    <bean id="goods" class="com.sist.model.GoodsModel"></bean>
    <bean id="seoul" class="com.sist.model.SeoulModel"></bean>
    <bean id="reply" class="com.sist.model.ReplyModel"></bean>
+   <bean id="pfr" class="com.sist.model.FreeBoardReplyModel"></bean>
 </beans>
