@@ -37,6 +37,7 @@ public class FreeBoardModel {
 		// main_jsp => 화면 출력 
 		return "../main/main.jsp";
 	}
+	
 	// 데이터 추가
 	@RequestMapping("board/insert.do")
 	public String board_insert(HttpServletRequest request,
@@ -64,6 +65,7 @@ public class FreeBoardModel {
 		
 		return "redirect:../board/list.do";
 	}
+	
 	// 상세보기 
 	// JSP   DispatcherServlet  Model DispatcherServlet jsp
 	// Model : Model / DAO / VO
@@ -90,7 +92,8 @@ public class FreeBoardModel {
 		CommonModel.commonRequestData(request);
 		return "../main/main.jsp";
 	}
-	// Ajax
+	
+	// Ajax 삭제
 	@RequestMapping("board/delete.do")
 	public void board_delete(HttpServletRequest request,
 			 HttpServletResponse response)
@@ -107,6 +110,8 @@ public class FreeBoardModel {
 			out.println(res);//=> Ajax에서 읽어서 처리 
 		}catch(Exception ex) {}
 	}
+	
+	//
 	@RequestMapping("board/update.do")
 	public String board_update(HttpServletRequest request,
 			 HttpServletResponse response)

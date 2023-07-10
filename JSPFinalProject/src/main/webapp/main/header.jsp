@@ -146,7 +146,7 @@ $(function(){
         </ul>
       </li>
       <li><a href="../goods/goods_list.do">레시피 스토어</a></li>
-      <li><a class="drop" href="#">커뮤니티</a>
+      <li><a class="drop" href="../board/list.do">커뮤니티</a>
         <ul>
           <li><a href="pages/gallery.html">공지사항</a></li>
           <li><a href="../board/list.do">자유게시판</a></li>

@@ -3,13 +3,6 @@ package com.sist.vo;
 import java.util.Date;
 
 
-/*
- *  
- * 
- * 
- */
-
-
 public class FreeBoardReplyVO {
 	private int no, bno, group_id, group_step, group_tab, root, depth;
 	private String id, name, msg, dbday;
