@@ -20,8 +20,7 @@ public class SeoulModel {
 		   type="1";
 	   int curpage=Integer.parseInt(page);
 	   SeoulDAO dao=SeoulDAO.newInstance();
-	   List<SeoulVO> list=dao.seoulListData(curpage, 
-			   Integer.parseInt(type));
+	   List<SeoulVO> list=dao.seoulListData(curpage, Integer.parseInt(type));
 	   int totalpage=dao.seoulTotalPage(Integer.parseInt(type));
 	   
 	   final int BLOCK=5;
@@ -52,11 +51,17 @@ public class SeoulModel {
 	   String type=request.getParameter("type");
 	   
 	   SeoulDAO dao=SeoulDAO.newInstance();
-	   SeoulVO vo=dao.seoulDetailData(Integer.parseInt(no),
-			   Integer.parseInt(type));
+	   SeoulVO vo=dao.seoulDetailData(Integer.parseInt(no), Integer.parseInt(type));
 	   request.setAttribute("vo", vo);
 	   request.setAttribute("type", type);
 	   request.setAttribute("main_jsp", "../seoul/seoul_detail.jsp");
+	   
+	   String addr=vo.getAddress();
+	   String addr1=addr.substring(addr.indexOf(" ")+1);
+	   String addr2=addr1.substring(addr1.indexOf(" ")+1);
+	   String addr3=addr2.substring(0,addr2.indexOf(" "));
+	   request.setAttribute("addr", addr3.trim()+" 맛집");
+	   
 	   return "../main/main.jsp";
    }
 }

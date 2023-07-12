@@ -67,6 +67,7 @@ public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     private List<String> clsList=new ArrayList<String>();
+    
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		clsList.add("com.sist.model.DiaryModel");

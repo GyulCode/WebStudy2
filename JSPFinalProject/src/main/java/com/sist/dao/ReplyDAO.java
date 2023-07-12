@@ -3,6 +3,18 @@ import java.util.*;
 import java.sql.*;
 import com.sist.common.*;
 import com.sist.vo.*;
+/*
+ * 처리순서
+ * getConnection()
+ * insert
+ * update -> 에러발생 -> 앞에 insert는 수행되고 커밋됨 이거 방지가 transaction 한번에 처리
+ * insert
+ * 
+ * -> 여기서 commit()하면 해결됨
+ * try catch -> rollback()설정
+ * 
+ * 
+ */
 
 import oracle.jdbc.OracleTypes;
 public class ReplyDAO {
@@ -188,6 +200,9 @@ public class ReplyDAO {
 		  db.disConnection(conn, cs);
 	  }
   }
+  
+  
+  
 }
 
 
