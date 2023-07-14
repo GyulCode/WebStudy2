@@ -104,6 +104,7 @@
       <table class="table">
         <tr>
           <td class="text-left">
+          
           <form method="post" action=""><!-- fomr 코드  -->
            Search:<select name=fs class="input-sm">
              <option value="name">이름</option>
@@ -113,6 +114,7 @@
            <input type=text name=ss size=15 class="input-sm">
            <button class="btn btn-sm btn-danger">검색</button>
            </form>
+           
           </td>
           <td class="text-right">
             <a href="list.jsp?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-info">이전</a>

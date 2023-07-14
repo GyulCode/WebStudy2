@@ -185,6 +185,7 @@ public class FreeBoardDAO {
 	   }
 	   return vo;
    }
+   
    // 5-1. 수정 
    public boolean freeboardUpdate(FreeBoardVO vo)
    {

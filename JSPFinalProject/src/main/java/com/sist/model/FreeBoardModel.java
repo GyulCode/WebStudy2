@@ -111,7 +111,7 @@ public class FreeBoardModel {
 		}catch(Exception ex) {}
 	}
 	
-	//
+	//4. 수정
 	@RequestMapping("board/update.do")
 	public String board_update(HttpServletRequest request,
 			 HttpServletResponse response)

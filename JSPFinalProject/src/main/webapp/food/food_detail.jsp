@@ -102,9 +102,21 @@ $(function(){
          </c:if>
          <tr>
           <td colspan="2" class="text-right">
-            <a href="#" class="btn btn-xs btn-danger">찜하기</a>
-            <a href="#" class="btn btn-xs btn-success">좋아요(0)</a>
-            <a href="#" class="btn btn-xs btn-info">예약</a>
+           <c:if test="${sessionScope.id!=null }">
+            <c:if test="${jjim_count==0 }">
+             <a href="../jjim/jjim_insert.do?fno=${vo.fno }" class="btn btn-xs btn-danger">찜하기</a>
+            </c:if>
+            <c:if test="${jjim_count!=0 }">
+             <span class="btn btn-xs btn-default">찜하기</span>
+            </c:if>
+            <c:if test="${like_count==0 }">
+              <a href="../like/like_insert.do?fno=${vo.fno }" class="btn btn-xs btn-success">좋아요(${like_total })</a>
+            </c:if>
+            <c:if test="${like_count!=0 }">
+              <span class="btn btn-xs btn-default">좋아요(${like_total })</span>
+            </c:if>
+            <a href="../reserve/reserve_main.do" class="btn btn-xs btn-info">예약</a>
+           </c:if>
             <a href="../food/food_category_list.do?cno=${vo.cno }" class="btn btn-xs btn-warning">목록</a>
           </td>
          </tr>
@@ -219,6 +231,21 @@ $(function(){
 		    } 
 		});    
 		</script>
+		<div>
+		  <%-- <table>
+		    <caption>관련 레시피</caption>
+		    <tr>
+		      <td>
+		      <c:forEach var="rvo" items=${relist }>
+		        <img alt="" src="${rvo.poster }">
+		      </td>
+		    </tr>
+		    <tr>
+		      <td></td>
+		    </tr>
+		    </c:forEach>
+		  </table> --%>
+		</div>
       </div>
     </div>
    </main>

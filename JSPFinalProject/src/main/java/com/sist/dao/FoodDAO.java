@@ -172,8 +172,8 @@ public class FoodDAO {
 	   try
 	   {
 		   conn=db.getConnection();
-		   String sql="SELECT fno,cno,poster,name,score,address,NVL(foodReplyData(fno),' ') as msg "
-		   		     +"NVL(foodReplyname(fno),'') as "
+		   String sql="SELECT fno,cno,poster,name,score,address,NVL(foodReplyData(fno),' ') as msg, "
+				     +"NVL(foodReplyName(fno),'') as rname "
 				     +"FROM food_house "
 				     +"WHERE cno=?";
 		   ps=conn.prepareStatement(sql);
@@ -194,7 +194,7 @@ public class FoodDAO {
 			   addr=addr.substring(0,addr.indexOf("지번"));
 			   vo.setAddress(addr.trim());
 			   vo.setMsg(rs.getString("msg"));
-			   //vo.setrname(rs)
+			   vo.setRname(rs.getString("rname"));
 			   list.add(vo);
 		   }
 	   }catch(Exception ex)
@@ -271,6 +271,41 @@ public class FoodDAO {
 			   vo.setFno(rs.getInt(1));
 			   vo.setName(rs.getString(2));
 			   vo.setHit(rs.getInt(3));
+			   list.add(vo);
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return list;
+   }
+   // 해당 => 레시피 
+   // 라멘 / 소바 / 우동 => 라멘 | 소바 | 우동
+   public List<RecipeVO> foodRecipeData(String type)
+   {
+	   List<RecipeVO> list=new ArrayList<RecipeVO>();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT no,title,chef,poster,rownum "
+				     +"FROM recipe "
+				     +"WHERE REGEXP_LIKE(title,?) "
+				     +"AND rownum<=5";
+		   ps=conn.prepareStatement(sql);
+		   ps.setString(1, type);
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next())
+		   {
+			   RecipeVO vo=new RecipeVO();
+			   vo.setNo(rs.getInt(1));
+			   vo.setTitle(rs.getString(2));
+			   vo.setChef(rs.getString(3));
+			   vo.setPoster(rs.getString(4));
 			   list.add(vo);
 		   }
 		   rs.close();
