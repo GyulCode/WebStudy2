@@ -138,13 +138,12 @@ $(function(){
      </tr>
      <tr style="display:none" id="delTr">
        <td colspan="4" class="text-right inline">
-       비밀번호:<input type=password name=pwd id=pwd1 size=10
-              class="input-sm">
-              <input type=button value="삭제" data-no="${vo.no }"
-               class="btn btn-sm btn-primary" id="delBtn">
+       비밀번호:<input type=password name=pwd id=pwd1 size=10 class="input-sm">
+             <input type=button value="삭제" data-no="${vo.no }"  class="btn btn-sm btn-primary" id="delBtn">
        </td>
      </tr>
    </table>
+   
    <div style="height: 20px"></div>
    <div class="col-sm-8">
        <table class="table">

@@ -9,19 +9,19 @@ import com.sist.vo.*;
 import com.sist.common.*;
 import com.sist.controller.RequestMapping;
 public class NoticeModel {
-	
   @RequestMapping("notice/notice_list.do")
-  public String notice_list(HttpServletRequest request, HttpServletResponse response)
+  public String notice_list(HttpServletRequest request,
+		  HttpServletResponse response)
   {
 	  String page=request.getParameter("page");
 	  if(page==null)
 		  page="1";
 	  int curpage=Integer.parseInt(page);
 	  NoticeDAO dao=NoticeDAO.newInstance();
-	  List<NoticeVO> list=dao.noticeListData(curpage);
+	  List<NoticeVO> list=dao.noticeListDate(curpage);
 	  int totalpage=dao.noticeTotalPage();
 	  
-	  String[] msg={"","일반공지","이벤트공지","긴급공지"};
+	  String[] msg={"","일반공지","이벤트공지","맛집공지","여행공지","레시피공지"};
 	  for(NoticeVO vo:list)
 	  {
 		  vo.setNotice_type(msg[vo.getType()]);
@@ -33,7 +33,6 @@ public class NoticeModel {
 	  CommonModel.commonRequestData(request);
 	  return "../main/main.jsp";
   }
-  
   @RequestMapping("notice/notice_detail.do")
   public String notice_detail(HttpServletRequest request,
 		  HttpServletResponse response)
@@ -41,15 +40,12 @@ public class NoticeModel {
 	  String no=request.getParameter("no");
 	  NoticeDAO dao=NoticeDAO.newInstance();
 	  NoticeVO vo=dao.noticeDetailData(Integer.parseInt(no));
-	  String[] msg={"","일반공지","이벤트공지","긴급공지"};
+	  String[] msg={"","일반공지","이벤트공지","맛집공지","여행공지","레시피공지"};
 	  vo.setNotice_type(msg[vo.getType()]);
 	  
 	  request.setAttribute("vo", vo);
 	  request.setAttribute("main_jsp", "../notice/notice_detail.jsp");
-	  
 	  CommonModel.commonRequestData(request);
-	  
 	  return "../main/main.jsp";
   }
-  
 }

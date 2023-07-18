@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,31 +12,32 @@
   <footer id="footer" class="clear"> 
     <!-- ################################################################################################ -->
     <div class="one_third first">
-      <h6 class="title">인기 맛집 TOP7</h6>
+      <h6 class="title">인기 맛집 Top7</h6>
       <ul class="nospace linklist">
-        <c:forEach var="fvo" items="${fList }">
-          <li><a href="#">${fvo.name }&nbsp;(${fvo.hit })</a></li>
+       <c:forEach var="fvo" items="${fList }">
+         <li><a href="#">${fvo.name }&nbsp;(${fvo.hit })</a></li>
+       </c:forEach>
+      </ul>
+    </div>
+    <div class="one_third">
+      <h6 class="title">인기 레시피 Top7</h6>
+      <ul class="nospace linklist">
+        <li><a href="#">Home Page</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="one_third">
+      <h6 class="title">오늘의 뉴스 Top7</h6>
+      <ul class="nospace linklist">
+        <c:forEach var="vo" items="${nList }" varStatus="s">
+         <c:if test="${s.index<7 }">
+           <li><a href="${vo.link }">${vo.title }</a></li>
+         </c:if>
         </c:forEach>
-      </ul>
-    </div>
-    <div class="one_third">
-      <h6 class="title">인기 레시피 TOP7</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Home Page</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="one_third">
-      <h6 class="title">오늘의 뉴스 TOP7</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Home Page</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact Us</a></li>
+        
       </ul>
     </div>
     
@@ -49,8 +50,8 @@
 <div class="wrapper row5">
   <div id="copyright" class="clear"> 
     <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2023 - 저작권 테스트 - <a href="#">뭔가 링크를 걸었음</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2023 - 강북쌍용교육센터 - <a href="#">D강의장</a></p>
+    <p class="fl_right">Product by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">홍길동</a></p>
     <!-- ################################################################################################ --> 
   </div>
 </div>

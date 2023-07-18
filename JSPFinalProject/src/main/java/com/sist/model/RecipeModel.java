@@ -71,13 +71,17 @@ public class RecipeModel {
 	   String fd=request.getParameter("fd");
 	   String chef=request.getParameter("chef");
 	   //System.out.println("chef="+chef);
+	   
 	   String page=request.getParameter("page");
 	   if(page==null)
 		   page="1";
 	   int curpage=Integer.parseInt(page);
+	   
 	   RecipeDAO dao=RecipeDAO.newInstance();
 	   List<RecipeVO> list=new ArrayList<RecipeVO>();
 	   int totalpage=0;
+	   
+	   
 	   if(sel.equals("all"))
 	   {
 	       list=dao.chefMakeRecipeData(curpage, chef);

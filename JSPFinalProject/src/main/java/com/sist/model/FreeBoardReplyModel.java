@@ -34,6 +34,7 @@ public class FreeBoardReplyModel {
 	  dao.replyInsert(vo);
 	  return "redirect:../board/detail.do?no="+bno;
   }
+  
   @RequestMapping("board/reply_update.do")
   public String reply_update(HttpServletRequest request, 
 		    HttpServletResponse response)
@@ -51,6 +52,7 @@ public class FreeBoardReplyModel {
 	  dao.replyUpdate(Integer.parseInt(no), msg);
 	  return "redirect:../board/detail.do?no="+bno;
   }
+  
   @RequestMapping("board/reply_reply_insert.do")
   public String reply_reply_insert(HttpServletRequest request,
 		  HttpServletResponse response)
@@ -76,6 +78,7 @@ public class FreeBoardReplyModel {
 	  dao.replyReplyInsert(Integer.parseInt(pno), vo);
 	  return "redirect:../board/detail.do?no="+bno;
   }
+  
   @RequestMapping("board/reply_delete.do")
   public String reply_delete(HttpServletRequest request,
 		  HttpServletResponse response)
